@@ -1,0 +1,22 @@
+/* Dharma Cookie: акцент берётся из переменной шаблона --dharma-primary, шрифт наследуется от сайта. */
+.dck{--dck-bg:#0a0a0a;--dck-fg:#fff;position:fixed;z-index:1060;left:16px;bottom:16px;box-sizing:border-box;width:calc(100% - 32px);max-width:380px;padding:24px;border-radius:24px;background:var(--dck-bg);color:var(--dck-fg);font:inherit;font-size:14px;line-height:1.45;box-shadow:0 8px 32px rgba(0,0,0,.28);animation:dck-in .25s ease-out;}
+.dck--light{--dck-bg:#fff;--dck-fg:#1a1a1a;box-shadow:0 8px 32px rgba(0,0,0,.18);}
+.dck--br{left:auto;right:16px;}
+.dck--bar{left:16px;right:16px;bottom:16px;width:auto;max-width:var(--dharma-container,1320px);margin:0 auto;padding:20px 28px;border-radius:20px;display:flex;align-items:center;gap:16px 40px;}
+.dck__x{flex:1 1 360px;}
+.dck__t{margin:0 0 12px;font-size:20px;font-weight:700;line-height:1.25;}
+.dck--bar .dck__t{margin:0 0 6px;font-size:18px;}
+.dck__p{margin:0 0 8px;}
+.dck--bar .dck__p{display:inline;margin:0;}
+.dck--bar .dck__p+.dck__p::before{content:" ";}
+.dck__p a{color:inherit;text-decoration:underline;}
+.dck__b{box-sizing:border-box;width:100%;margin-top:12px;}
+.dck__ok{padding:12px 16px;border:0;border-radius:14px;background:var(--dharma-primary,#2f5bff);color:#fff;font:inherit;font-weight:600;cursor:pointer;}
+.dck--bar .dck__b{flex:0 0 auto;width:auto;min-width:160px;margin:0;}
+.dck__ok:hover{filter:brightness(1.1);}
+.dck__b:focus-visible,.dck__p a:focus-visible{outline:2px solid currentColor;outline-offset:2px;}
+@keyframes dck-in{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+@media (max-width:480px){.dck,.dck--br{left:8px;right:8px;bottom:8px;width:auto;max-width:none;padding:20px;}}
+@media (max-width:640px){.dck--bar{flex-direction:column;align-items:stretch;left:8px;right:8px;bottom:8px;padding:18px;}.dck--bar .dck__x{flex:0 0 auto;}.dck--bar .dck__b{width:100%;margin-top:4px;}}
+@media (prefers-reduced-motion:reduce){.dck{animation:none;}}
+@media print{.dck{display:none;}}

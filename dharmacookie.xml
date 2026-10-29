@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" method="upgrade">
+    <name>PLG_SYSTEM_DHARMACOOKIE</name>
+    <author>Dharma</author>
+    <creationDate>2026-10</creationDate>
+    <copyright>(C) 2026 Dharma</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>0.1.0</version>
+    <description>PLG_SYSTEM_DHARMACOOKIE_DESCRIPTION</description>
+    <namespace path="src">Dharma\Plugin\System\DharmaCookie</namespace>
+    <files>
+        <folder plugin="dharmacookie">services</folder>
+        <folder>assets</folder>
+        <folder>src</folder>
+    </files>
+    <languages>
+        <language tag="ru-RU">language/ru-RU/plg_system_dharmacookie.ini</language>
+        <language tag="ru-RU">language/ru-RU/plg_system_dharmacookie.sys.ini</language>
+        <language tag="en-GB">language/en-GB/plg_system_dharmacookie.ini</language>
+        <language tag="en-GB">language/en-GB/plg_system_dharmacookie.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" label="PLG_SYSTEM_DHARMACOOKIE_FIELDSET_BASIC">
+                <field
+                    name="test_mode"
+                    type="radio"
+                    label="PLG_SYSTEM_DHARMACOOKIE_TEST_MODE"
+                    description="PLG_SYSTEM_DHARMACOOKIE_TEST_MODE_DESC"
+                    default="0"
+                    layout="joomla.form.field.radio.switcher"
+                    >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                    name="policy_version"
+                    type="text"
+                    label="PLG_SYSTEM_DHARMACOOKIE_POLICY_VERSION"
+                    description="PLG_SYSTEM_DHARMACOOKIE_POLICY_VERSION_DESC"
+                    default="1"
+                    filter="string"
+                />
+                <field
+                    name="lifetime"
+                    type="number"
+                    label="PLG_SYSTEM_DHARMACOOKIE_LIFETIME"
+                    description="PLG_SYSTEM_DHARMACOOKIE_LIFETIME_DESC"
+                    default="365"
+                    min="1"
+                    max="730"
+                    filter="integer"
+                />
+            </fieldset>
+            <fieldset name="texts" label="PLG_SYSTEM_DHARMACOOKIE_FIELDSET_TEXTS" description="PLG_SYSTEM_DHARMACOOKIE_FIELDSET_TEXTS_DESC">
+                <field name="title" type="text" label="PLG_SYSTEM_DHARMACOOKIE_TITLE" default="PLG_SYSTEM_DHARMACOOKIE_DEFAULT_TITLE" translate_default="true" filter="string" />
+                <field
+                    name="text"
+                    type="textarea"
+                    label="PLG_SYSTEM_DHARMACOOKIE_TEXT"
+                    description="PLG_SYSTEM_DHARMACOOKIE_TEXT_DESC"
+                    default="PLG_SYSTEM_DHARMACOOKIE_DEFAULT_TEXT"
+                    translate_default="true"
+                    rows="6"
+                    filter="string"
+                />
+                <field
+                    name="link1_url"
+                    type="text"
+                    label="PLG_SYSTEM_DHARMACOOKIE_LINK1_URL"
+                    description="PLG_SYSTEM_DHARMACOOKIE_LINK_URL_DESC"
+                    hint="/politika-cookie"
+                    default=""
+                    filter="string"
+                />
+                <field
+                    name="link2_url"
+                    type="text"
+                    label="PLG_SYSTEM_DHARMACOOKIE_LINK2_URL"
+                    description="PLG_SYSTEM_DHARMACOOKIE_LINK_URL_DESC"
+                    hint="/rekomendatelnye-tehnologii"
+                    default=""
+                    filter="string"
+                />
+                <field name="button_text" type="text" label="PLG_SYSTEM_DHARMACOOKIE_BUTTON_TEXT" default="PLG_SYSTEM_DHARMACOOKIE_DEFAULT_BUTTON" translate_default="true" filter="string" />
+            </fieldset>
+            <fieldset name="appearance" label="PLG_SYSTEM_DHARMACOOKIE_FIELDSET_APPEARANCE">
+                <field
+                    name="position"
+                    type="list"
+                    label="PLG_SYSTEM_DHARMACOOKIE_POSITION"
+                    default="bl"
+                    >
+                    <option value="bl">PLG_SYSTEM_DHARMACOOKIE_POSITION_BL</option>
+                    <option value="br">PLG_SYSTEM_DHARMACOOKIE_POSITION_BR</option>
+                    <option value="bar">PLG_SYSTEM_DHARMACOOKIE_POSITION_BAR</option>
+                </field>
+                <field
+                    name="theme"
+                    type="list"
+                    label="PLG_SYSTEM_DHARMACOOKIE_THEME"
+                    default="dark"
+                    >
+                    <option value="dark">PLG_SYSTEM_DHARMACOOKIE_THEME_DARK</option>
+                    <option value="light">PLG_SYSTEM_DHARMACOOKIE_THEME_LIGHT</option>
+                </field>
+                <field
+                    name="button_class"
+                    type="text"
+                    label="PLG_SYSTEM_DHARMACOOKIE_BUTTON_CLASS"
+                    description="PLG_SYSTEM_DHARMACOOKIE_BUTTON_CLASS_DESC"
+                    hint="btn btn-primary"
+                    default=""
+                    filter="string"
+                />
+                <field
+                    name="button_icon_class"
+                    type="text"
+                    label="PLG_SYSTEM_DHARMACOOKIE_BUTTON_ICON_CLASS"
+                    description="PLG_SYSTEM_DHARMACOOKIE_BUTTON_ICON_CLASS_DESC"
+                    hint="ar-arrow"
+                    default=""
+                    filter="string"
+                />
+                <field
+                    name="custom_css"
+                    type="textarea"
+                    label="PLG_SYSTEM_DHARMACOOKIE_CUSTOM_CSS"
+                    description="PLG_SYSTEM_DHARMACOOKIE_CUSTOM_CSS_DESC"
+                    default=""
+                    rows="6"
+                    filter="raw"
+                />
+            </fieldset>
+        </fields>
+    </config>
+</extension>
