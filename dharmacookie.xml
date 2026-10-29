@@ -19,6 +19,9 @@
         <language tag="en-GB">language/en-GB/plg_system_dharmacookie.ini</language>
         <language tag="en-GB">language/en-GB/plg_system_dharmacookie.sys.ini</language>
     </languages>
+    <updateservers>
+        <server type="extension" name="Dharma Cookie Updates">https://raw.githubusercontent.com/shivayanamahom/dharma-cookie/main/updates.xml</server>
+    </updateservers>
     <config>
         <fields name="params">
             <fieldset name="basic" label="PLG_SYSTEM_DHARMACOOKIE_FIELDSET_BASIC">
