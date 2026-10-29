@@ -1,0 +1,38 @@
+name: Проверка кода
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: PHP, синтаксис
+        run: |
+          find . -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l
+
+      - name: Манифест, xmllint
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libxml2-utils
+          xmllint --noout dharmacookie.xml updates.xml
+
+      - name: JavaScript, синтаксис
+        run: node --check assets/banner.js
+
+      - name: Нет строчных комментариев в JS и CSS
+        # PHP-минификатор сворачивает переводы строк в пробел, поэтому // закомментировал бы весь остаток кода.
+        # Блочные /* */ разрешены (в них само "//" допустимо), поэтому их вырезаем до проверки.
+        # Адреса вида https://... не считаются: перед // не должно быть двоеточия.
+        run: |
+          status=0
+          for f in assets/banner.js assets/banner.css; do
+            if perl -0777 -pe 's{/\*.*?\*/}{ }gs' "$f" | grep -nE '(^|[^:])//'; then
+              echo "::error file=$f::Строчные комментарии // в $f запрещены, используйте /* */"
+              status=1
+            fi
+          done
+          exit $status

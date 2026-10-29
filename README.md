@@ -52,10 +52,18 @@
 
 ## Установка
 
-1. Скачайте [`plg_system_dharmacookie.zip`](https://github.com/shivayanamahom/dharma-cookie/releases/latest/download/plg_system_dharmacookie.zip) со страницы релизов.
-2. В админке Joomla: **Система → Установка → Расширения** и загрузите zip.
-3. **Система → Плагины**, найдите **«Система — Dharma Cookie»** и включите.
-4. Откройте плагин, на вкладке «Тексты» укажите адреса ссылок на вашу политику.
+1. Установите плагин одним из способов:
+   - **По ссылке.** В админке Joomla: **Система → Установка → Расширения → Установить из URL**, вставьте адрес:
+
+     ```text
+     https://github.com/shivayanamahom/dharma-cookie/releases/latest/download/plg_system_dharmacookie.zip
+     ```
+
+   - **Из файла.** Скачайте [`plg_system_dharmacookie.zip`](https://github.com/shivayanamahom/dharma-cookie/releases/latest/download/plg_system_dharmacookie.zip) со страницы релизов и загрузите его на вкладке «Загрузить файл пакета».
+2. **Система → Плагины**, найдите **«Система — Dharma Cookie»** и включите.
+3. Откройте плагин, на вкладке «Тексты» укажите адреса ссылок на вашу политику.
+
+Обновления Joomla подтягивает сама (**Система → Обновление → Расширения**) из `updates.xml` в этом репозитории.
 
 > Требуется Joomla 5 или 6. Плагин проверен на Joomla 6.2 и PHP 8.4.
 

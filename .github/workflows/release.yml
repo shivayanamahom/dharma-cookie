@@ -1,0 +1,47 @@
+name: Сборка релиза
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Версия тега совпадает с манифестом
+        id: ver
+        run: |
+          tag_version="${GITHUB_REF_NAME#v}"
+          manifest_version="$(sed -n 's:.*<version>\(.*\)</version>.*:\1:p' dharmacookie.xml | head -n1)"
+          if [ "$tag_version" != "$manifest_version" ]; then
+            echo "::error::Тег $GITHUB_REF_NAME не совпадает с версией в dharmacookie.xml ($manifest_version)"
+            exit 1
+          fi
+          echo "version=$tag_version" >> "$GITHUB_OUTPUT"
+
+      - name: Сборка zip
+        env:
+          VERSION: ${{ steps.ver.outputs.version }}
+        run: |
+          zip -r "plg_system_dharmacookie-${VERSION}.zip" dharmacookie.xml services src assets language LICENSE
+          cp "plg_system_dharmacookie-${VERSION}.zip" plg_system_dharmacookie.zip
+          unzip -l plg_system_dharmacookie.zip
+          sha256sum plg_system_dharmacookie*.zip
+
+      - name: Релиз
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.ver.outputs.version }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            "plg_system_dharmacookie-${VERSION}.zip" \
+            plg_system_dharmacookie.zip \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "Dharma Cookie ${VERSION}" \
+            --generate-notes
